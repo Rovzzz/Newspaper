@@ -38,9 +38,18 @@
     <ApplicationIcon>Приятный шелест.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +68,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DataBase.cs" />
+    <Compile Include="Newspaper.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Newspaper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_AddEditProduct.xaml.cs">
+      <DependentUpon>Page_AddEditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_Autorization.xaml.cs">
+      <DependentUpon>Page_Autorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_Home.xaml.cs">
+      <DependentUpon>Page_Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Post.cs">
+      <DependentUpon>Newspaper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Newspaper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Type_Product.cs">
+      <DependentUpon>Newspaper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>Newspaper.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,11 +108,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Navigation_page.xaml">
+    <Page Include="Pages\Page_AddEditProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page_Agents.xaml">
+    <Page Include="Pages\Page_Autorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Page_Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -84,23 +124,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page_Sale.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Navigation_page.xaml.cs">
-      <DependentUpon>Navigation_page.xaml</DependentUpon>
+    <Compile Include="Newspaper.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Newspaper.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Page_Agents.xaml.cs">
-      <DependentUpon>Page_Agents.xaml</DependentUpon>
+    <Compile Include="Newspaper.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Newspaper.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_Products.xaml.cs">
       <DependentUpon>Page_Products.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Page_Sale.xaml.cs">
-      <DependentUpon>Page_Sale.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -119,6 +156,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Newspaper.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Newspaper.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Newspaper.edmx.diagram">
+      <DependentUpon>Newspaper.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,6 +178,23 @@
   <ItemGroup>
     <Resource Include="Resources\Приятный шелест.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Newspaper.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Newspaper.edmx</DependentUpon>
+      <LastGenOutput>Newspaper.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Newspaper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Newspaper.edmx</DependentUpon>
+      <LastGenOutput>Newspaper.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

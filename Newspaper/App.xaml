@@ -21,5 +21,26 @@
             <Setter Property="FontSize" Value="25"/>
         </Style>
 
+        <Style TargetType="TextBox" x:Key="tbAutorizationStyle">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontFamily" Value="Agency FB"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="tbStyle">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontFamily" Value="Agency FB"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="cbStyle">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontFamily" Value="Agency FB"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
     </Application.Resources>
 </Application>

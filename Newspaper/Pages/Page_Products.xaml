@@ -5,12 +5,46 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Newspaper.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page_Products">
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="Page_Products" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource TbTitleStyle}" Text="Тест" Grid.Row="0"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" Height="50">
+                <TextBlock Text="Поиск: " Style="{StaticResource TbTitleStyle}" HorizontalAlignment="Left" FontSize="18"/>
+                <TextBox x:Name="tbPoisk"  Style="{StaticResource tbStyle}" TextChanged="tbPoisk_TextChanged" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="50">
+                <TextBlock Text=" Фильтр: " Style="{StaticResource TbTitleStyle}" FontSize="18"/>
+                <ComboBox x:Name="cbTypeProduct"  Style="{StaticResource cbStyle}" SelectionChanged="cbTypeProduct_SelectionChanged" DisplayMemberPath="Name_Type_Product"/>
+            </StackPanel>
+        </StackPanel>
 
+        <DataGrid x:Name="DgProducts" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование продукции" Binding="{Binding Name_Product}" Width="*"/>
+                <DataGridTextColumn Header="Тип продукции" Binding="{Binding Type_Product.Name_Type_Product}" Width="*"/>
+                <DataGridTextColumn Header="Артикул" Binding="{Binding Article}" Width="*"/>
+                <DataGridTextColumn Header="Кол-во человек для производства" Binding="{Binding ProductionPersonCount}" Width="*"/>
+                <DataGridTextColumn Header="Номер цеха производства" Binding="{Binding ProductionWorkshopNumber}" Width="*"/>
+                <DataGridTextColumn Header="Минимальная цена продажи" Binding="{Binding MinCostForAgent}" Width="*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEditProduct" Style="{StaticResource ButtonStyle}" Content="Редактировать" Click="btnEditProduct_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Style="{StaticResource ButtonStyle}" Content="Добавить" Grid.Row="2" HorizontalAlignment="Left" Name="BtnAdd" Click="BtnAdd_Users_Click" Visibility="Visible"/>
+        <Button Style="{StaticResource ButtonStyle}" Content="Удалить" Grid.Row="2" HorizontalAlignment="Right" Name="BtnDelete" Click="BtnDelete_Users_Click" Visibility="Visible"/>
     </Grid>
 </Page>

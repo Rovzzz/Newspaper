@@ -1,0 +1,42 @@
+﻿<Page x:Class="Newspaper.Pages.Page_AddEditProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Newspaper.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page_AddEditProduct">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Наименование продукции" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+        <TextBlock Text="Тип продукции" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+        <TextBlock Text="Артикул" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+        <TextBlock Text="Кол-во человек для производства" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+        <TextBlock Text="Номер цеха производства" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+        <TextBlock Text="Минимальная цена продажи" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment ="Center"/>
+
+        <TextBox Text="{Binding Name_Product}" Grid.Row="0" Grid.Column="1" Height="40"/>
+        <ComboBox x:Name="ComboBox_Type_Product" SelectedItem="{Binding Type_Product}" DisplayMemberPath="Name_Type_Product" Grid.Row="1" Grid.Column="1" Height="40"/>
+        <TextBox Text="{Binding Article}" Grid.Row="2" Grid.Column="1"  Height="40"/>
+        <TextBox Text="{Binding ProductionPersonCount}" Grid.Row="3" Grid.Column="1"  Height="40"/>
+        <TextBox Text="{Binding ProductionWorkshopNumber}" Grid.Row="4" Grid.Column="1"  Height="40"/>
+        <TextBox Text="{Binding MinCostForAgent}" Grid.Row="5" Grid.Column="1"  Height="40"/>
+
+        <Button Style="{StaticResource ButtonStyle}" Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="7" Name="BtnSave_AddEdit_Product" Click="BtnSave_AddEdit_Product_Click"/>
+    </Grid>
+</Page>

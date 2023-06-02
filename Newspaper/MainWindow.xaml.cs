@@ -26,7 +26,7 @@ namespace Newspaper
             InitializeComponent();
             Manager.MainFrame = MainFrame;
             //Отображение окна навигации
-            MainFrame.Navigate(new Pages.Navigation_page());
+            MainFrame.Navigate(new Pages.Page_Autorization());
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)
